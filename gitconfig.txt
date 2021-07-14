@@ -1,0 +1,18 @@
+[user]
+  name = Renan Henrique
+  email = henriquebasshvf@gmail.com
+[alias]
+  g = git
+  nw = "!f() { git checkout master && git fetch && git pull origin master && git checkout -b \"$*\" && git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\"; }; f"
+  ci = "!f() { git commit -m \"$*\"; }; f"
+  co = checkout
+  cb = checkout -b
+  cm = !(git checkout master && git pull origin master --rebase)
+  po = "!f() { git push origin \"$(git rev-parse --abbrev-ref HEAD)\"; }; f"
+  pf = push origin master -f
+  um = pull origin master --rebase
+  ri = rebase -i
+  rb = "!f() { git checkout master && git pull origin master --rebase && git rebase origin \"$(git rev-parse --abbrev-ref HEAD)\"; }; f"
+  st = status -sb
+  sf = show --name-only
+  lg = log --pretty=format:'%Cred%h%Creset %C(bold)%cr%Creset %Cgreen<%an>%Creset %s' --max-count=30

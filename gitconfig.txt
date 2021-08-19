@@ -2,17 +2,22 @@
   name = Renan Henrique
   email = henriquebasshvf@gmail.com
 [alias]
-  g = git
-  nw = "!f() { git checkout master && git fetch && git pull origin master && git checkout -b \"$*\" && git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\"; }; f"
-  ci = "!f() { git commit -m \"$*\"; }; f"
+	g = git
   co = checkout
   cb = checkout -b
-  cm = !(git checkout master && git pull origin master --rebase)
-  po = "!f() { git push origin \"$(git rev-parse --abbrev-ref HEAD)\"; }; f"
-  pf = push origin master -f
-  um = pull origin master --rebase
-  ri = rebase -i
-  rb = "!f() { git checkout master && git pull origin master --rebase && git rebase origin \"$(git rev-parse --abbrev-ref HEAD)\"; }; f"
   st = status -sb
   sf = show --name-only
-  lg = log --pretty=format:'%Cred%h%Creset %C(bold)%cr%Creset %Cgreen<%an>%Creset %s' --max-count=30
+  fo = fetch origin
+	r = rebase
+	ri = rebase -i
+	rc = rebase --continue
+	ra = rebase --abort
+	up = "!f() { git fetch origin && git remote prune origin && git checkout develop && git rebase origin/develop; }; f"
+	nw = "!f() { git up && git checkout -b \"$*\" && git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\" -f; }; f"
+ 	ci = "!f() { git commit -a -m \"$*\"; }; f"
+  ck = "!f() { git checkout \"$*\" && git pull origin \"$*\" --rebase; }; f"
+	po = "!f() { git push origin \"$(git rev-parse --abbrev-ref HEAD)\"; }; f"
+	pf = "!f() { git push origin \"$(git rev-parse --abbrev-ref HEAD)\" -f; }; f"
+	ub =  "!f() { git pull origin \"$*\" --rebase; }; f"
+	rb = "!f() { git checkout master && git pull origin master --rebase && git rebase origin \"$(git rev-parse --abbrev-ref HEAD)\"; }; f"
+  lg = log  --pretty=format:'%Cred%h%Creset %C(bold)%cr%Creset %Cgreen<%an>%Creset %s' --max-count=50
